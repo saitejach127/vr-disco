@@ -3,23 +3,6 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   </head>
   <body>
-    <script>
-      AFRAME.registerComponent("modify-materials", {
-        init: function () {
-          // Wait for model to load.
-          this.el.addEventListener("model-loaded", () => {
-            // Grab the mesh / scene.
-            const obj = this.el.getObject3D("mesh");
-            // Go over the submeshes and modify materials we want.
-            obj.traverse((node) => {
-              if (node.name.indexOf("ship") !== -1) {
-                node.material.color.set("red");
-              }
-            });
-          });
-        },
-      });
-    </script>
     <a-scene>
       <!-- <a-assets>
         <video id="floor" autoplay loop="true" src="images/dancefloor.webp"></video>
@@ -49,11 +32,11 @@
       <a-assets>
         <a-asset-item
           id="tree-obj"
-          src="images/disco_ball_2.obj"
+          src="images/disco_ball_1.obj"
         ></a-asset-item>
         <a-asset-item
           id="tree-mtl"
-          src="images/disco_ball_2.mtl"
+          src="images/disco_ball_1.mtl"
         ></a-asset-item>
       </a-assets>
 

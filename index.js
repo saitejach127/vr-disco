@@ -36,10 +36,3 @@ setInterval(() => {
   sphere.setAttribute('rotation', rotaion)
 //   sky.setAttribute('color', color);
 },10);
-let i=2;
-setInterval(() => {
-    obj.setAttribute("src", `images/disco_ball_${i}.obj`);
-    mtl.setAttribute("src", `images/disco_ball_${i}.mtl`);
-    i+=1;
-    i = i%3 + 1;
-}, 1000)
