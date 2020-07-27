@@ -1,0 +1,15 @@
+{
+  "name": "VR Disco",
+  "short_name": "VR Disco",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "icons": [
+    {
+      "src": "images/favicon.png",
+      "sizes": "225x225"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <link rel="manifest" href="manifest.json">
   </head>
   <body>
     <a-scene>
@@ -45,5 +46,17 @@
       ></a-entity>
     </a-scene>
     <script src="index.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then((reg) => {
+            console.log("Service Worker Registered ", reg);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    </script>
   </body>
 </html>
