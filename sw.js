@@ -3,6 +3,7 @@ const precache = [
   "/",
   "index.html",
   "index.js",
+  "aframe.min.js",
   "images/disco_ball_1.mtl",
   "images/disco_ball_1.obj",
   "images/floor.png",
