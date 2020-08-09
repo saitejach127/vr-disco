@@ -1,38 +1,46 @@
 const $ = (query) => document.querySelector(query);
 
 const sphere = $('a-entity');
-const plane = $('a-plane');
-const sky = $('a-sky')
-const obj = document.getElementById("tree-obj");
-const mtl = document.getElementById("tree-mtl");
+const one = document.getElementById("1");
+const two = document.getElementById("2");
+const three = document.getElementById("3");
+
+function setAllHidden(){
+  one.setAttribute("visible", "false");
+  two.setAttribute("visible", "false");
+  three.setAttribute("visible", "false");
+}
 
 const shiftDegrees = (value) => (value + 1) % 360;
 
 let degrees = 0;
-
-// const animate = () => {
-//   degrees = shiftDegrees(degrees);
-//   const color = `hsl(${degrees}, 100%, 50%)`;
-//   const variation = Math.sin(Date.now() / 1000);
-//   const rotation = `-90 0 ${degrees}`;
-
-//   sphere.setAttribute('color', color);
-
-// //   plane.setAttribute('color', color);
-// //   sky.setAttribute('color', color);
-
-//   requestAnimationFrame(animate);
-// };
-
-// requestAnimationFrame(animate);
+let time = 0.0;
+let totalTime = 1;
 
 setInterval(() => {
     degrees = shiftDegrees(degrees);
-  const color = `hsl(${degrees}, 100%, 50%)`;
-  const color2 = `hsl(${2*degrees}, 100%, 50%)`;
   const rotaion = `0 ${degrees} 0`
 
-  sphere.setAttribute('color', color);
   sphere.setAttribute('rotation', rotaion)
-//   sky.setAttribute('color', color);
 },10);
+
+var i = 1;
+
+setInterval(() => {
+  if(i==4){
+    i = 1;
+  }
+  if(i==1){
+    setAllHidden();
+    one.setAttribute("visible","true");
+    i++;
+  } else if(i==2){
+    setAllHidden();
+    two.setAttribute("visible", "true");
+    i++;
+  } else if(i==3){
+    setAllHidden();
+    three.setAttribute("visible", "true");
+    i++;
+  }
+}, 300)

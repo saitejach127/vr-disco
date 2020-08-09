@@ -1,5 +1,7 @@
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Virtual Reality Disco</title>
     <script src="aframe.min.js"></script>
     <link rel="manifest" href="manifest.json" />
   </head>
@@ -29,6 +31,9 @@
         obj-model="obj: #tree-obj; mtl: #tree-mtl"
         position="0 3 -2"
       ></a-entity>
+      <a-light type="point" color="blue" position="-5 5 0" intensity="2.0" id="1" visible="false"></a-light>
+      <a-light type="point" color="red" position="5 5 0" intensity="2.0" id="2" visible="false"></a-light>
+      <a-light type="point" color="green" position="5 5 -5" intensity="3.0" id="3" visible="true"></a-light>
     </a-scene>
     <script src="index.js"></script>
     <script>
