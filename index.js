@@ -26,25 +26,6 @@ setInterval(() => {
 
 var i = 1;
 
-// setInterval(() => {
-//   if(i==4){
-//     i = 1;
-//   }
-//   if(i==1){
-//     setAllHidden();
-//     one.setAttribute("visible","true");
-//     i++;
-//   } else if(i==2){
-//     setAllHidden();
-//     two.setAttribute("visible", "true");
-//     i++;
-//   } else if(i==3){
-//     setAllHidden();
-//     three.setAttribute("visible", "true");
-//     i++;
-//   }
-// }, 300)
-
 setInterval(() => {
   if(time >= totalTime){
     time = 0;
@@ -62,3 +43,51 @@ setInterval(() => {
   one.setAttribute("color", `hsl(${degrees}, 100%, 50%)`);
   two.setAttribute("color", `hsl(100%, 50%, ${degrees})`)
 }, totalTime)
+
+var dancingModels = [
+  {
+    modelName: "dancing-knight",
+    modelFileLocation: "./models/dancing-knight.glb",
+    modelScale: 0.5,
+    animationName: "ezgif.com-video-to-gif"
+  }
+]
+
+var DANCE_SET_REPEAT_COUNT = 1;
+var takenPositions = new Set();
+
+function getRandomNumber(MIN_NUMBER = -5, MAX_NUMBER = 5){
+  let min = Math.ceil(MIN_NUMBER);
+  let max = Math.floor(MAX_NUMBER);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function getUniqueRandomPosition(){
+  var xPos = getRandomNumber();
+  var yPos = getRandomNumber();
+  var zPos = getRandomNumber();
+  var position = `${xPos} 0 ${zPos}`;
+  if(takenPositions.has(position)){
+    return getUniqueRandomPosition();
+  } else {
+    takenPositions.add(position);
+    return position;
+  }
+}
+
+function addModelToScene(modelProperties){
+  console.log("prop", modelProperties.modelName);
+  var entityElement = document.createElement("a-entity");
+  entityElement.setAttribute("id", `${modelProperties.modelName}-id`);
+  entityElement.setAttribute("gltf-model", `#${modelProperties.modelName}`);
+  entityElement.setAttribute("scale", `${modelProperties.modelScale} ${modelProperties.modelScale} ${modelProperties.modelScale}`);
+  entityElement.setAttribute("animation-mixer", `clip:${modelProperties.animationName}`);
+  entityElement.setAttribute("position", getUniqueRandomPosition());
+  document.getElementById("scene").appendChild(entityElement);
+}
+
+for(let i=0;i<DANCE_SET_REPEAT_COUNT;i++){
+  for(let j=0;j<dancingModels.length;j++){
+    addModelToScene(dancingModels[j]);
+  }
+}

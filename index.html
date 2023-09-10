@@ -1,45 +1,40 @@
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <title>Virtual Reality Disco</title>
     <script src="aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
     <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-    <a-scene>
+    <a-scene id="scene">
       <a-sky color="black"></a-sky>
-      <a-plane
-        src="images/floor.png"
-        position="0 0 0"
-        scale="10 10 0"
-        rotation="-90 0 0"
-        width="2"
-        height="2"
-      ></a-plane>
-      <a-camera position="0 1 2"></a-camera>
+      <a-plane src="images/floor.png" position="0 0 0" scale="10 10 0" rotation="-90 0 0" width="2" height="2"></a-plane>
+      <a-camera position="0 1.3 1"></a-camera>
       <a-assets>
-        <a-asset-item
-          id="tree-obj"
-          src="images/disco_ball_1.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="tree-mtl"
-          src="images/disco_ball_1.mtl"
-        ></a-asset-item>
+        <a-asset-item id="tree-obj" src="images/disco_ball_1.obj"></a-asset-item>
+        <a-asset-item id="tree-mtl" src="images/disco_ball_1.mtl"></a-asset-item>
+        <a-asset-item id="dance-knight" src="./models/dancing-knight.glb"></a-asset-item>
+        <a-asset-item id="dance-color-knight" src="./models/dancing-color-knight.glb"></a-asset-item>
+        <a-asset-item id="dance-man" src="./models/dancing-man.glb"></a-asset-item>
+        <a-asset-item id="dance-woman" src="./models/dancing-women.glb"></a-asset-item>
+        <a-asset-item id="dance-alien" src="./models/dancing-alien.glb"></a-asset-item>
       </a-assets>
-      <a-entity
-        id="ball"
-        obj-model="obj: #tree-obj; mtl: #tree-mtl"
-        position="0 3 -2"
-      ></a-entity>
+      <a-entity id="ball" obj-model="obj: #tree-obj; mtl: #tree-mtl" position="0 3 -2"></a-entity>
+      <a-entity id="dance-knight-id" gltf-model="#dance-knight" position="0 0 -2" scale="0.5 0.5 0.5" animation-mixer="clip:ezgif.com-video-to-gif" ></a-entity>
+      <a-entity id="dance-color-knight-id" gltf-model="#dance-color-knight" position="-1 0 -2" animation-mixer="clip:mixamo.com" ></a-entity>
+      <a-entity id="dance-man-id" gltf-model="#dance-man" position="2 0 0" scale="0.01 0.01 0.01" animation-mixer="clip:Take 001" ></a-entity>
+      <a-entity id="dance-woman-id" gltf-model="#dance-woman" position="-2 0 0" animation-mixer="clip:mixamo.com" ></a-entity>
+      <a-entity id="dance-alien-id" gltf-model="#dance-alien" position="-2 0 1" animation-mixer="clip:mixamo.com"></a-entity>
+      
+
       <a-light type="point" color="blue" position="-5 5 0" intensity="2.0" id="1" visible="true" target="#ball"></a-light>
       <a-light type="point" color="blue" position="-5 5 0" intensity="2.0" id="2" visible="true" target="#ball"></a-light>
       <a-light type="ambient" color="white" intensity="0.5"></a-light>
-      <!-- <a-light type="point" color="red" position="5 5 0" intensity="2.0" id="2" visible="false"></a-light>
-      <a-light type="point" color="green" position="5 5 -5" intensity="3.0" id="3" visible="true"></a-light> -->
+      <!-- <a-light type="point" color="red" position="5 5 0" intensity="2.0" id="2" visible="false"></a-light><a-light type="point" color="green" position="5 5 -5" intensity="3.0" id="3" visible="true"></a-light> -->
     </a-scene>
     <script src="index.js"></script>
-    <script>
+    <!-- <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
           .register("sw.js")
@@ -50,6 +45,6 @@
             console.error(err);
           });
       }
-    </script>
+    </script> -->
   </body>
 </html>
