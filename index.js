@@ -77,13 +77,13 @@ var dancingModels = [
   },
 ];
 
-var DANCE_SET_REPEAT_COUNT = 6;
+var DANCE_SET_REPEAT_COUNT = 8;
 var takenPositions = new Set();
 takenPositions.add("0 1.3 1")
 takenPositions.add("0 1 1");
 takenPositions.add("0 2 1");
 
-function getRandomNumber(MIN_NUMBER = -5, MAX_NUMBER = 5) {
+function getRandomNumber(MIN_NUMBER = -10, MAX_NUMBER = 10) {
   let min = Math.ceil(MIN_NUMBER);
   let max = Math.floor(MAX_NUMBER);
   return Math.floor(Math.random() * (max - min) + min);

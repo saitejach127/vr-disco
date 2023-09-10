@@ -23,11 +23,10 @@
       </a-assets>
       <a-entity id="ball" obj-model="obj: #tree-obj; mtl: #tree-mtl" position="0 3 -2"></a-entity>
       <a-entity id="music" material="color: blue"
-          position="0 0 0" sound="src: url(sounds/spinmyhead.mp3); autoplay: true"></a-entity>
+          position="0 0 0" sound="src: url(sounds/spinmyhead.mp3); autoplay: true; loop: true;"></a-entity>
       <a-light type="point" color="blue" position="-5 5 0" intensity="2.0" id="1" visible="true" target="#ball"></a-light>
       <a-light type="point" color="blue" position="-5 5 0" intensity="2.0" id="2" visible="true" target="#ball"></a-light>
       <a-light type="ambient" color="white" intensity="0.5"></a-light>
-      <!-- <a-light type="point" color="red" position="5 5 0" intensity="2.0" id="2" visible="false"></a-light><a-light type="point" color="green" position="5 5 -5" intensity="3.0" id="3" visible="true"></a-light> -->
     </a-scene>
     <script src="index.js"></script>
     <!-- <script>
