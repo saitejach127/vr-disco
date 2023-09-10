@@ -1,6 +1,4 @@
-const $ = (query) => document.querySelector(query);
-
-const sphere = $("a-entity");
+const sphere = document.querySelector("a-entity");
 const one = document.getElementById("1");
 const two = document.getElementById("2");
 const three = document.getElementById("3");
@@ -40,8 +38,8 @@ setInterval(() => {
   one.setAttribute("position", `${3 * x} 3 ${3 * z}`);
   two.setAttribute("position", `${3 * z} 3 ${3 * x}`);
   degrees = shiftDegrees(degrees);
-  one.setAttribute("color", `hsl(${degrees}, 100%, 50%)`);
-  two.setAttribute("color", `hsl(100%, 50%, ${degrees})`);
+  // one.setAttribute("color", `hsl(${degrees}, 100%, 50%)`);
+  // two.setAttribute("color", `hsl(100%, 50%, ${degrees})`);
 }, totalTime);
 
 var dancingModels = [
@@ -51,10 +49,37 @@ var dancingModels = [
     modelScale: 0.5,
     animationName: "ezgif.com-video-to-gif",
   },
+  {
+    modelName: "dancing-alien",
+    modelFileLocation: "./models/dancing-alien.glb",
+    modelScale: 1,
+    animationName: "mixamo.com",
+  },
+  {
+    modelName: "dance-color-knight",
+    modelFileLocation: "./models/dancing-color-knight.glb",
+    modelScale: 1,
+    animationName: "mixamo.com",
+  },
+  {
+    modelName: "dance-man",
+    modelFileLocation: "./models/dancing-man.glb",
+    modelScale: 0.01,
+    animationName: "Take 001",
+  },
+  {
+    modelName: "dance-woman",
+    modelFileLocation: "./models/dancing-women.glb",
+    modelScale: 1,
+    animationName: "mixamo.com",
+  },
 ];
 
-var DANCE_SET_REPEAT_COUNT = 1;
+var DANCE_SET_REPEAT_COUNT = 6;
 var takenPositions = new Set();
+takenPositions.add("0 1.3 1")
+takenPositions.add("0 1 1");
+takenPositions.add("0 2 1");
 
 function getRandomNumber(MIN_NUMBER = -5, MAX_NUMBER = 5) {
   let min = Math.ceil(MIN_NUMBER);
@@ -78,7 +103,7 @@ function getUniqueRandomPosition() {
 function addModelToScene(modelProperties) {
   console.log("prop", modelProperties.modelName);
   var entityElement = document.createElement("a-entity");
-  entityElement.setAttribute("gltf-model", `#${modelProperties.modelName}`);
+  entityElement.setAttribute("gltf-model", `${modelProperties.modelFileLocation}`);
   entityElement.setAttribute(
     "scale",
     `${modelProperties.modelScale} ${modelProperties.modelScale} ${modelProperties.modelScale}`
@@ -90,10 +115,13 @@ function addModelToScene(modelProperties) {
   entityElement.setAttribute("position", getUniqueRandomPosition());
   document.getElementById("scene").appendChild(entityElement);
 }
-setTimeout(() => {
-  for (let i = 0; i < DANCE_SET_REPEAT_COUNT; i++) {
-    for (let j = 0; j < dancingModels.length; j++) {
-      addModelToScene(dancingModels[j]);
+
+AFRAME.registerComponent("model-changer", {
+  init: function() {
+    for (let i = 0; i < DANCE_SET_REPEAT_COUNT; i++) {
+      for (let j = 0; j < dancingModels.length; j++) {
+        addModelToScene(dancingModels[j]);
+      }
     }
   }
-}, 500);
+})
