@@ -113,6 +113,7 @@ function addModelToScene(modelProperties) {
     `clip:${modelProperties.animationName}`
   );
   entityElement.setAttribute("position", getUniqueRandomPosition());
+  entityElement.setAttribute("rotation", `0 ${getRandomNumber(-360, 360)} 0`)
   document.getElementById("scene").appendChild(entityElement);
 }
 
