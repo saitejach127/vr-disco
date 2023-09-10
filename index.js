@@ -2,6 +2,7 @@ const sphere = document.querySelector("a-entity");
 const one = document.getElementById("1");
 const two = document.getElementById("2");
 const three = document.getElementById("3");
+const sound = document.getElementById("music");
 
 function setAllHidden() {
   one.setAttribute("visible", "false");
@@ -37,9 +38,10 @@ setInterval(() => {
   let z = Math.cos(angle);
   one.setAttribute("position", `${3 * x} 3 ${3 * z}`);
   two.setAttribute("position", `${3 * z} 3 ${3 * x}`);
+  sound.setAttribute("position", `${3 * z} 3 ${3 * x}`);
   degrees = shiftDegrees(degrees);
-  // one.setAttribute("color", `hsl(${degrees}, 100%, 50%)`);
-  // two.setAttribute("color", `hsl(100%, 50%, ${degrees})`);
+  one.setAttribute("color", `hsl(${degrees}, 100%, 50%)`);
+  two.setAttribute("color", `hsl(100%, 50%, ${degrees})`);
 }, totalTime);
 
 var dancingModels = [
