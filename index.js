@@ -91,7 +91,6 @@ function getRandomNumber(MIN_NUMBER = -10, MAX_NUMBER = 10) {
 
 function getUniqueRandomPosition() {
   var xPos = getRandomNumber();
-  var yPos = getRandomNumber();
   var zPos = getRandomNumber();
   var position = `${xPos} 0 ${zPos}`;
   if (takenPositions.has(position)) {
@@ -103,7 +102,6 @@ function getUniqueRandomPosition() {
 }
 
 function addModelToScene(modelProperties) {
-  console.log("prop", modelProperties.modelName);
   var entityElement = document.createElement("a-entity");
   entityElement.setAttribute("gltf-model", `${modelProperties.modelFileLocation}`);
   entityElement.setAttribute(
