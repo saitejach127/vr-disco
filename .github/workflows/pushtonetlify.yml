@@ -12,15 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - run: yarn
-
-      - run: yarn build
-
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './build'
+          publish-dir: './'
           production-deploy: true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
